@@ -9,12 +9,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import utils.CsvLogger;
 
-import static java.lang.Math.PI;
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-*   Up to down integration test
-*/
 @DisplayName("Trigonometric function test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class FunctionTest {
@@ -56,7 +52,7 @@ public class FunctionTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/trigonometric/trig.csv")
     @DisplayName("sin(x) is a stub; all other aren't a stub")
-    void sinCalculatorIsStub(Double x, Double expectedResult) {
+    void sinIsStub(Double x, Double expectedResult) {
         double sinStub = sin.getStubsTable().get(x);
         double cosX = cos.calculateFunction(x);
         double tanX = tan.calculateFunction(x);
@@ -69,7 +65,7 @@ public class FunctionTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/trigonometric/trig.csv")
     @DisplayName("cos(x) is a stub; all other aren't a stub")
-    void cosCalculatorIsStub(Double x, Double expectedResult) {
+    void cosIsStub(Double x, Double expectedResult) {
         double cosStub = cos.getStubsTable().get(x);
         double sinX = sin.calculateFunction(x);
         double cscX = csc.calculateFunction(x);
@@ -82,7 +78,7 @@ public class FunctionTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/trigonometric/trig.csv")
     @DisplayName("tan(x) is a stub; all other aren't a stub")
-    void tanCalculatorIsStub(Double x, Double expectedResult) {
+    void tanIsStub(Double x, Double expectedResult) {
         double sinX = sin.calculateFunction(x);
         double cosX = cos.calculateFunction(x);
         double tanStub = tan.getStubsTable().get(x);
@@ -95,7 +91,7 @@ public class FunctionTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/trigonometric/trig.csv")
     @DisplayName("cos(x) is a stub; all other aren't a stub")
-    void cscCalculatorIsStub(Double x, Double expectedResult) {
+    void cscIsStub(Double x, Double expectedResult) {
         double sinX = sin.calculateFunction(x);
         double cosX = cos.calculateFunction(x);
         double tanX = tan.calculateFunction(x);

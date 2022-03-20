@@ -7,16 +7,18 @@ import static java.lang.Double.*;
 public class Log10 extends AbstractFunction {
 
     {
-        getStubsTable().put(POSITIVE_INFINITY, log10(POSITIVE_INFINITY));
-        getStubsTable().put(10.0 + 0.01, log10(10.0 + 0.01));
-        getStubsTable().put(10.0, log10(10.0));
-        getStubsTable().put(10.0 - 0.01, log10(10.0 - 0.01));
-        getStubsTable().put(1.0 + 0.01, log10(1.0 + 0.01));
-        getStubsTable().put(1.0, log10(1.0));
-        getStubsTable().put(1.0 - 0.01, log10(1.0 - 0.01));
-        getStubsTable().put(0.0 + 0.01, log10(0.0 + 0.01));
-        getStubsTable().put(0.0, log10(0.0));
-        getStubsTable().put(0.0 - 0.01, log10(0.0 - 0.01));
+        getStubsTable().put(POSITIVE_INFINITY, POSITIVE_INFINITY);
+        getStubsTable().put(0.0, NEGATIVE_INFINITY);
+        getStubsTable().put(0.5, -0.301);
+        getStubsTable().put(1.0, 0.0);
+        getStubsTable().put(1.4, 0.146);
+        getStubsTable().put(2.3, 0.362);
+        getStubsTable().put(3.4, 0.531);
+        getStubsTable().put(5.2, 0.716);
+        getStubsTable().put(10.515, 1.022);
+        getStubsTable().put(11.5234, 1.062);
+        getStubsTable().put(14.8432, 1.172);
+        getStubsTable().put(100.0, 2.0);
     }
 
     private final Ln ln;

@@ -2,19 +2,25 @@ package logarithmic;
 
 import function.AbstractFunction;
 
+import static java.lang.Double.NEGATIVE_INFINITY;
+import static java.lang.Double.POSITIVE_INFINITY;
+import static java.lang.Math.log;
+
 public class Log2 extends AbstractFunction {
 
     {
-        getStubsTable().put(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        getStubsTable().put(2.0 + 0.01, 1.00720);
-        getStubsTable().put(2.0, 1.0);
-        getStubsTable().put(2.0 - 0.01, 0.992768);
-        getStubsTable().put(1.0 + 0.01, 0.0143553);
+        getStubsTable().put(POSITIVE_INFINITY, POSITIVE_INFINITY);
+        getStubsTable().put(0.0, NEGATIVE_INFINITY);
+        getStubsTable().put(0.5, -1.0);
         getStubsTable().put(1.0, 0.0);
-        getStubsTable().put(1.0 - 0.01, -0.0144996);
-        getStubsTable().put(0.0 + 0.01, -6.632979274557514);
-        getStubsTable().put(0.0, Double.NEGATIVE_INFINITY);
-        getStubsTable().put(0.0 - 0.01, Double.NaN);
+        getStubsTable().put(1.4, 0.485);
+        getStubsTable().put(2.3, 1.202);
+        getStubsTable().put(3.4, 1.766);
+        getStubsTable().put(5.2, 2.379);
+        getStubsTable().put(10.515, 3.394);
+        getStubsTable().put(11.5234, 3.526);
+        getStubsTable().put(14.8432, 3.892);
+        getStubsTable().put(100.0, 6.644);
     }
 
     private final Ln ln;

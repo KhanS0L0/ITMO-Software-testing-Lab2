@@ -7,15 +7,17 @@ public class Log5 extends AbstractFunction {
 
     {
         getStubsTable().put(POSITIVE_INFINITY, POSITIVE_INFINITY);
-        getStubsTable().put(5.0 + 0.01, 1.00124);
-        getStubsTable().put(5.0, 1.0);
-        getStubsTable().put(5.0 - 0.01, 0.998756);
-        getStubsTable().put(1.0 + 0.01, 0.00618249);
-        getStubsTable().put(1.0, 0.0);
-        getStubsTable().put(1.0 - 0.01, -0.00624462);
-        getStubsTable().put(0.0 + 0.01, -2.861353);
         getStubsTable().put(0.0, NEGATIVE_INFINITY);
-        getStubsTable().put(0.0 - 0.01, NaN);
+        getStubsTable().put(0.5, -0.431);
+        getStubsTable().put(1.0, 0.0);
+        getStubsTable().put(1.4, 0.209);
+        getStubsTable().put(2.3, 0.518);
+        getStubsTable().put(3.4, 0.76);
+        getStubsTable().put(5.2, 1.024);
+        getStubsTable().put(10.515, 1.462);
+        getStubsTable().put(11.5234, 1.519);
+        getStubsTable().put(14.8432, 1.676);
+        getStubsTable().put(100.0, 2.861);
     }
 
     private final Ln ln;
