@@ -1,6 +1,7 @@
 import function.SystemSolver;
 
 import logarithmic.*;
+import org.junit.jupiter.params.provider.CsvSource;
 import trigonometric.*;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SystemSolverTest {
     private SystemSolver systemSolver;
+    private final Double DELTA = 0.005;
 
     @BeforeAll
     void init(){
@@ -38,7 +40,6 @@ public class SystemSolverTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/system.csv")
     void systemSolverTest(Double x, Double expectedResult) {
-        Double DELTA = 0.05;
         assertEquals(expectedResult, systemSolver.calculate(x), DELTA);
     }
 }

@@ -29,19 +29,77 @@ public class CalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"Infinity, Infinity", "1.99, 0.992768", "2.0, 1.0", "-0.01, NaN", "0.0, -Infinity"})
+    @CsvSource(value = {
+            "-3.0, NaN",
+            "-2.0, NaN",
+            "-1.0, NaN",
+            "-0.1, NaN",
+            "0.0, -Infinity",
+            "0.2,  -1.609",
+            "1.0,   0.0",
+            "1.4,   0.336",
+            "2.3,   0.833",
+            "3.4,   1.224",
+            "10.0,  2.303",
+            "Infinity, Infinity"
+    })
+    void lnTest(Double x, Double expectedResult){
+        assertEquals(expectedResult, ln.calculateFunction(x), DELTA);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "-3.0, NaN",
+            "-2.0, NaN",
+            "-1.0, NaN",
+            "-0.1, NaN",
+            "0.0, -Infinity",
+            "0.2,  -2.322",
+            "1.0,   0.0",
+            "1.4,   0.485",
+            "2.3,   1.202",
+            "3.4,   1.766",
+            "10.0,  3.322",
+            "Infinity, Infinity"
+    })
     void log2Test(Double x, Double expectedResult) {
         assertEquals(expectedResult, log2.calculateFunction(x), DELTA);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"Infinity, Infinity", "4.99, 0.998756", "5.0, 1.0", "-0.01, NaN", "0.0, -Infinity"})
+    @CsvSource(value = {
+            "-3.0, NaN",
+            "-2.0, NaN",
+            "-1.0, NaN",
+            "-0.1, NaN",
+            "0.0, -Infinity",
+            "0.2,  -1.0",
+            "1.0,   0.0",
+            "1.4,   0.209",
+            "2.3,   0.518",
+            "3.4,   0.766",
+            "10.0,  1.431",
+            "Infinity, Infinity"
+    })
     void log5Test(Double x, Double expectedResult) {
         assertEquals(expectedResult, log5.calculateFunction(x), DELTA);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"Infinity, Infinity", "9.99, 0.999565", "10.0, 1.0", "-0.01, NaN", "0.0, -Infinity"})
+    @CsvSource(value = {
+            "-3.0, NaN",
+            "-2.0, NaN",
+            "-1.0, NaN",
+            "-0.1, NaN",
+            "0.0, -Infinity",
+            "0.2,  -0.699",
+            "1.0,   0.0",
+            "1.4,   0.146",
+            "2.3,   0.362",
+            "3.4,   0.531",
+            "10.0,  1.0",
+            "Infinity, Infinity"
+    })
     void log10Test(Double x, Double expectedResult) {
         assertEquals(expectedResult, log10.calculateFunction(x), DELTA);
     }

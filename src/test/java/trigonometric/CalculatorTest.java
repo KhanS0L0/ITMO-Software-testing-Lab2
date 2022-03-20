@@ -2,10 +2,12 @@ package trigonometric;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static java.lang.Math.PI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Trigonometric calculator test")
@@ -17,8 +19,8 @@ public class CalculatorTest {
     private Tan tan;
     private Csc csc;
 
-    private final double ACCURACY = 0.001;
-    private final double DELTA = 0.05;
+    private final double ACCURACY = 0.0001;
+    private final double DELTA = 0.0005;
 
     @BeforeAll
     void init(){
@@ -31,17 +33,15 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {
             "-3.1415,  0.0",
-            "-3.0,    -0.141",
-            "-2.0,    -0.909",
             "-1.5707, -1.0",
-            "-1.0,    -0.841",
+            "-1.2,    -0.932",
+            "-0.75,   -0.682",
             "0.0,      0.0",
-            "1.0,      0.841",
+            "0.75,     0.682",
+            "1.2,      0.932",
             "1.5707,   1.0",
-            "2.0,      0.909",
-            "3.0,      0.141",
             "3.1415,   0.0"
-    }
+            }
     )
     void sinTest(Double x, Double expectedResult) {
         assertEquals(expectedResult, sin.calculateFunction(x), DELTA);
@@ -50,15 +50,13 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {
             "-3.1415, -1.0",
-            "-3.0,    -0.99",
-            "-2.0,    -0.416",
             "-1.5707,  0.0",
-            "-1.0,     0.54",
+            "-1.2,     0.362",
+            "-0.75,    0.732",
             "0.0,      1.0",
-            "1.0,      0.54",
+            "0.75,     0.732",
+            "1.2,      0.362",
             "1.5707,   0.0",
-            "2.0,     -0.416",
-            "3.0,     -0.99",
             "3.1415,  -1.0"
             }
     )
@@ -69,37 +67,44 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {
             "-3.1415,  0.0",
-            "-3.0,     0.143",
-            "-2.0,     2.185",
-            "-1.5,    -14.101",
-            "-1.0,    -1.557",
+            "-1.2,    -2.572",
+            "-0.75,   -0.932",
             "0.0,      0.0",
-            "1.0,      1.557",
-            "1.5,      14.101",
-            "2.0,     -2.185",
-            "3.0,     -0.143",
+            "0.75,     0.932",
+            "1.2,      2.572",
             "3.1415,   0.0"
-    }
+            }
     )
     void tanTest(Double x, Double expectedResult) {
         assertEquals(expectedResult, tan.calculateFunction(x), DELTA);
     }
 
+    @Test
+    void tanNanTest(){
+        Tan tan = new Tan(0.000000001);
+        assertEquals(Double.NaN, tan.calculateFunction(PI/2.0));
+        assertEquals(Double.NEGATIVE_INFINITY, tan.calculateFunction(-PI/2.0));
+    }
+
     @ParameterizedTest
     @CsvSource(value = {
-            "-4,       1.321",
-            "-3.0,    -7.086",
-            "-2.0,    -1.1",
             "-1.5707, -1.0",
-            "-1.0,    -1.188",
-            "1.0,      1.188",
-            "1.5707,   1.0",
-            "2.0,      1.1",
-            "3.0,      7.086",
-            "4,       -1.321"
-    }
+            "-1.2,    -1.073",
+            "-0.75,   -1.467",
+            "0.75,     1.467",
+            "1.2,      1.073",
+            "1.5707,   1.0"
+            }
     )
     void cscTest(Double x, Double expectedResult) {
         assertEquals(expectedResult, csc.calculateFunction(x), DELTA);
+    }
+
+    @Test
+    void cscNanTest(){
+        Csc csc = new Csc(0.000000001);
+        assertEquals(Double.NaN, csc.calculateFunction(PI));
+        assertEquals(Double.POSITIVE_INFINITY, csc.calculateFunction(0.0));
+        assertEquals(Double.NaN, csc.calculateFunction(-PI));
     }
 }
